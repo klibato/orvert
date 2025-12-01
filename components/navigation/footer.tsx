@@ -60,11 +60,11 @@ export function Footer() {
               {[
                 { label: "Le Labo", href: "/labo" },
                 { label: "Configurateur", href: "/configurateur" },
-                { label: "Guides techniques", href: "/labo" },
+                { label: "Guides techniques", href: "/labo/guides" },
                 { label: "FAQ", href: "/faq" },
                 { label: "Support", href: "/support" },
               ].map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <Link
                     href={link.href}
                     className="text-sm text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors font-mono"
