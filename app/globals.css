@@ -1,0 +1,207 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* L'Or Vert - Technical Design System */
+
+:root {
+  /* Background layers */
+  --background-primary: #0D0D0D;
+  --background-surface: #1A1A1A;
+  --background-elevated: #2A2A2A;
+
+  /* Text colors */
+  --text-primary: #E8E8E8;
+  --text-secondary: #888888;
+  --text-muted: #666666;
+
+  /* Accent colors */
+  --accent-primary: #00D26A;
+  --accent-primary-hover: #00B85D;
+  --accent-data: #3B82F6;
+  --accent-alert: #F59E0B;
+  --accent-error: #EF4444;
+
+  /* Status colors (LED indicators) */
+  --status-available: #00D26A;
+  --status-low: #F59E0B;
+  --status-unavailable: #EF4444;
+
+  /* Border colors */
+  --border-default: #2A2A2A;
+  --border-focus: #00D26A;
+  --border-muted: #1A1A1A;
+}
+
+@theme inline {
+  /* Colors */
+  --color-bg-primary: var(--background-primary);
+  --color-bg-surface: var(--background-surface);
+  --color-bg-elevated: var(--background-elevated);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-hover: var(--accent-primary-hover);
+  --color-accent-data: var(--accent-data);
+  --color-accent-alert: var(--accent-alert);
+  --color-accent-error: var(--accent-error);
+
+  --color-status-available: var(--status-available);
+  --color-status-low: var(--status-low);
+  --color-status-unavailable: var(--status-unavailable);
+
+  --color-border-default: var(--border-default);
+  --color-border-focus: var(--border-focus);
+  --color-border-muted: var(--border-muted);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Spacing scale (technical precision) */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Border radius (minimal, technical) */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+}
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Technical grid background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle, #2A2A2A 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Monospace for technical data */
+.font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--background-elevated);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-primary);
+  color: var(--background-primary);
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Utility classes */
+.technical-border {
+  border: 1px solid var(--border-default);
+}
+
+.led-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px currentColor;
+}
+
+.led-available {
+  background: var(--status-available);
+  color: var(--status-available);
+}
+
+.led-low {
+  background: var(--status-low);
+  color: var(--status-low);
+}
+
+.led-unavailable {
+  background: var(--status-unavailable);
+  color: var(--status-unavailable);
+}
+
+/* Technical table styles */
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specs-table th,
+.specs-table td {
+  padding: 0.75rem;
+  border: 1px solid var(--border-default);
+  text-align: left;
+}
+
+.specs-table th {
+  background: var(--background-elevated);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.specs-table td {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+/* Animation preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
